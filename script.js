@@ -19,18 +19,21 @@ class Calculator {
         this.current = this.current.toString() + number.toString();
     }
     chooseOperation(operation) {
-
+        this.operation = operation;
+        this.previous = this.current; 
+        this.current = '';
     }
     compute() {
 
     }
     updateDisplay() {
         this.currentTextElement.innerText = this.current;
+        this.previousTextElement.innerText = this.previous;
     }
 };
 
 const numberButtons = document.querySelectorAll('[data-number]');
-const operationButtons = document.querySelectorAll('[data-operations]');
+const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const deleteButton = document.querySelector('[data-delete]');
@@ -43,42 +46,50 @@ numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
         calculator.updateDisplay();
-    })
-})
+    });
+});
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText);
+        calculator.updateDisplay();
+    });
+});
+
 
 /*
 const add = function(a, b) {
-	return a + b;
+return a + b;
 };
 
 const subtract = function(a, b) {
-	return a - b; 
+return a - b; 
 };
 
 const multiply = function(a, b) {
-  return a * b; 
+return a * b; 
 };
 
 const divide = function(a, b) {
-    return a / b; 
-  };
+return a / b; 
+};
 
 const operate = (operator, a, b) {
-    let a = Number(a);
-    let b = Number(b); 
-    switch(operator) {
-        case +:
-            return add(a, b); 
-        case -: 
-            return subtract(a, b);
-        case *:
-            return multiply(a, b); 
-        case /: 
-            if (b === 0) {
-                return undefined
-            } else {
-                return divide(a, b);
-            }
-    }
+let a = Number(a);
+let b = Number(b); 
+switch(operator) {
+    case +:
+        return add(a, b); 
+    case -: 
+        return subtract(a, b);
+    case *:
+        return multiply(a, b); 
+    case /: 
+        if (b === 0) {
+            return undefined
+        } else {
+            return divide(a, b);
+        }
+}
 }; 
 */
