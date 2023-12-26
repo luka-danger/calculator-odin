@@ -52,8 +52,11 @@ class Calculator {
             default: 
                 return 
         }
+        // Calculator will display computation 
         this.current = computation;
+        // Sets operation to non-selected
         this.operation = undefined;
+        // Clears previous operand 
         this.previous = '';
     }
     updateDisplay() {
@@ -88,5 +91,10 @@ operationButtons.forEach(button => {
 
 equalsButton.addEventListener('click', button => {
     calculator.compute();
+    calculator.updateDisplay();
+});
+
+allClearButton.addEventListener('click', button => {
+    calculator.clear();
     calculator.updateDisplay();
 });
