@@ -1,3 +1,4 @@
+/* Apply font effects to initial and live updates */ 
 *, *::before, *::after {
     box-sizing: border-box;
     font-family: sans-serif;
@@ -7,6 +8,7 @@
 body {
     padding: 0; 
     margin: 0;
+    /* Change color from left to right */ 
     background: linear-gradient(to right,skyblue, teal)
 }
 
@@ -15,11 +17,17 @@ body {
     justify-content: center;
     align-content: center;
     min-height: 100vh;
+    /* Repeat 4 x 100px wide columns */ 
     grid-template-columns: repeat(4, 100px);
+    /* Set min screen size to 120px 
+       Auto allows screen to grow for based on inputs */ 
+    /* Repeat 5 x 100px height rows */ 
     grid-template-rows: minmax(120px, auto)repeat(5, 100px);
 }
 
+/* Apply changes to all buttons */ 
 .container > button {
+    /* Changes mouse to pointer to indicate response on mouseover */ 
     cursor: pointer;
     font-size: 2rem;
     border: 1px solid white;
@@ -27,17 +35,21 @@ body {
     background-color: rgba(255, 255, 255 , .75);
 }
 
+/* Apply effects on hover */ 
 .container > button:hover {
     background-color: rgba(255, 255, 255 , .90);
 }
 
+/* Allow class to span the size of 2 buttons */ 
 .span-two {
     grid-column: span 2;
 }
 
 .screen {
+    /* Allow screen to span entire width of of calculator
+       1 is first column, -1 is last column */ 
     grid-column: 1 / -1;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: flex-end;
     justify-content: space-around;
