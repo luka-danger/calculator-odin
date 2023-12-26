@@ -89,12 +89,12 @@ operationButtons.forEach(button => {
     });
 });
 
-equalsButton.addEventListener('click', button => {
+equalsButton.addEventListener('click', () => {
     calculator.compute();
     calculator.updateDisplay();
 });
 
-allClearButton.addEventListener('click', button => {
+allClearButton.addEventListener('click', () => {
     calculator.clear();
     calculator.updateDisplay();
 });
