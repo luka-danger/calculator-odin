@@ -9,13 +9,22 @@ class Calculator {
         this.previous = '';
         this.operation = undefined;
     }
-    appendNumber(){
+    delete() {
+
+    }
+    appendNumber(number) {
+        this.current = number;
+    }
+    chooseOperation(operation) {
+
+    }
+    compute() {
 
     }
     updateDisplay() {
-        
+        this.currentTextElement.innerText = this.current;
     }
-}
+};
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operations]');
@@ -25,17 +34,16 @@ const deleteButton = document.querySelector('[data-delete]');
 const previousTextElement = document.querySelector('[data-previous]');
 const currentTextElement = document.querySelector('[data-current]');
 
-numberButtons.addEventListener('click', () => {
-    .textContent = 'Test'
-});
-
 const calculator = new Calculator(previousTextElement, currentTextElement) 
 
 numberButtons.forEach(button => {
-    calculator.appendNumber(button.innerText);
-    calculator.updateDisplay();
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+    })
 })
 
+/*
 const add = function(a, b) {
 	return a + b;
 };
@@ -70,3 +78,4 @@ const operate = (operator, a, b) {
             }
     }
 }; 
+*/
