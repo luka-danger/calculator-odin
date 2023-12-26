@@ -60,7 +60,7 @@ class Calculator {
         // Clears previous operand 
         this.previous = '';
     }
-    /* 
+    
     getDisplayNumber(number) {
         const stringNum = number.toString();
         const integerDigits = parseFloat(stringNum.split('.')[0]);
@@ -68,9 +68,9 @@ class Calculator {
         const decimalDigits = stringNum.split('.')[1];
         let integerDisplay;
         if (isNaN(integerDigits)) {
-            integerDisplay = ''
+            integerDisplay = '';
         } else {
-            integerDisplay integerDigits.toLocaleString('en', {
+            integerDisplay = integerDigits.toLocaleString('en', {
                 maximumFractionDigits: 0 })
         }
         if (decimalDigits != null) {
@@ -78,20 +78,16 @@ class Calculator {
         } else {
             return integerDisplay;
         }
-    } */
+    } 
 
     updateDisplay() {
-        this.currentTextElement.innerText = this.current;
-        this.previousTextElement.innerText = this.previous;
-        /*
         this.currentTextElement.innerText = this.getDisplayNumber(this.current);
-        if (this.opereration != null) {
+        if (this.operation != null) {
             this.previousTextElement.innerText = 
                 `${this.getDisplayNumber(this.previous)} ${this.operation}`
         } else {
             this.previousTextElement.innerText = '';
         }
-        */
     }
 };
 
