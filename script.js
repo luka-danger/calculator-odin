@@ -31,6 +31,7 @@ class Calculator {
     }
     compute() {
         let computation;
+        // Create prev and curr variables for arithmetic functions 
         const prev = parseFloat(this.previous);
         const curr = parseFloat(this.current);
         // Prevent code from running if user clicks '=' w/o 2nd operand 
@@ -47,9 +48,9 @@ class Calculator {
             case 'x': 
                 computation = prev * curr
                 break
-            case '/': 
+            case '/':
                 computation = prev / curr
-                break
+                break;
             default: 
                 return 
         }
