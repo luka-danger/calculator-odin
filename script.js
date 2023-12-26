@@ -19,6 +19,7 @@ class Calculator {
         this.current = this.current.toString() + number.toString();
     }
     chooseOperation(operation) {
+        // Prevent selecting operator if no operand selected
         if (this.current === '') return; 
         this.operation = operation;
         this.previous = this.current; 
