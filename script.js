@@ -1,3 +1,10 @@
+class Calculator {
+    constructor(previousTextElement, currentTextElement) {
+        this.previousTextElement = previousTextElement;
+        this.currentTextElement = currentTextElement;
+    }
+}
+
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operations]');
 const equalsButton = document.querySelector('[data-equals]');
@@ -6,7 +13,9 @@ const deleteButton = document.querySelector('[data-delete]');
 const previousTextElement = document.querySelector('[data-previous]');
 const currentTextElement = document.querySelector('[data-current]');
 
-
+numberButtons.addEventListener('click', () => {
+    .textContent = 'Test'
+});
 
 const add = function(a, b) {
 	return a + b;
