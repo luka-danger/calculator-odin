@@ -21,12 +21,40 @@ class Calculator {
     chooseOperation(operation) {
         // Prevent selecting operator if no operand selected
         if (this.current === '') return; 
+        if (this.previous != '') {
+            this.compute()
+        }
         this.operation = operation;
         this.previous = this.current; 
         this.current = '';
     }
     compute() {
-
+        let computation;
+        const prev = parseFloat(this.previous);
+        const curr = parseFloat(this.current);
+        // Prevent code from running if user clicks '=' w/o 2nd operand 
+        if (isNaN(prev) || isNaN(curr)) return;
+        // Switch / Case (Think: multiple if statements chained on single object)
+        // Assigns .operation ('+') to execute code inside of case
+        switch (this.operation) {
+            case '+': 
+                computation = prev + curr
+                break
+            case '-': 
+                computation = prev - curr
+                break
+            case 'x': 
+                computation = prev * curr
+                break
+            case '/': 
+                computation = prev / curr
+                break
+            default: 
+                return 
+        }
+        this.current = computation;
+        this.operation = undefined;
+        this.previous = '';
     }
     updateDisplay() {
         this.currentTextElement.innerText = this.current;
@@ -58,40 +86,7 @@ operationButtons.forEach(button => {
     });
 });
 
-
-/*
-const add = function(a, b) {
-return a + b;
-};
-
-const subtract = function(a, b) {
-return a - b; 
-};
-
-const multiply = function(a, b) {
-return a * b; 
-};
-
-const divide = function(a, b) {
-return a / b; 
-};
-
-const operate = (operator, a, b) {
-let a = Number(a);
-let b = Number(b); 
-switch(operator) {
-    case +:
-        return add(a, b); 
-    case -: 
-        return subtract(a, b);
-    case *:
-        return multiply(a, b); 
-    case /: 
-        if (b === 0) {
-            return undefined
-        } else {
-            return divide(a, b);
-        }
-}
-}; 
-*/
+equalsButton.addEventListener('click', button => {
+    calculator.compute();
+    calculator.updateDisplay();
+});
