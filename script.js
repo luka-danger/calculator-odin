@@ -60,9 +60,11 @@ class Calculator {
         // Clears previous operand 
         this.previous = '';
     }
-    
+    // Helper function to be used with updateDisplay()
     getDisplayNumber(number) {
+        // Convert number to string to allow .split in next line
         const stringNum = number.toString();
+        // Allow user to place a decimal place first
         const integerDigits = parseFloat(stringNum.split('.')[0]);
         // Split string on decimal character
         const decimalDigits = stringNum.split('.')[1];
@@ -70,9 +72,12 @@ class Calculator {
         if (isNaN(integerDigits)) {
             integerDisplay = '';
         } else {
+            // Add commas to displayed integers
             integerDisplay = integerDigits.toLocaleString('en', {
+                // Prevents commas after decimal place
                 maximumFractionDigits: 0 })
         }
+        // Will return integers (and commas) followed by decimals
         if (decimalDigits != null) {
             return `${integerDisplay}.${decimalDigits}`
         } else {
@@ -81,15 +86,20 @@ class Calculator {
     } 
 
     updateDisplay() {
+        // Display current operand value  
         this.currentTextElement.innerText = this.getDisplayNumber(this.current);
+        // Display previous operand value 
         if (this.operation != null) {
             this.previousTextElement.innerText = 
                 `${this.getDisplayNumber(this.previous)} ${this.operation}`
-        } else {
+        } 
+        // Clear previous operand value once valid computation selected
+        else {
             this.previousTextElement.innerText = '';
         }
     }
 };
+// Activate HTML Buttons to run live w/ JavaScript 
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
@@ -101,6 +111,7 @@ const currentTextElement = document.querySelector('[data-current]');
 
 const calculator = new Calculator(previousTextElement, currentTextElement) 
 
+// Use forEach(button => {}) when adding event Listener to multiple buttons
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
