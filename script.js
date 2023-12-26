@@ -9,6 +9,12 @@ class Calculator {
         this.previous = '';
         this.operation = undefined;
     }
+    appendNumber(){
+
+    }
+    updateDisplay() {
+        
+    }
 }
 
 const numberButtons = document.querySelectorAll('[data-number]');
@@ -22,6 +28,13 @@ const currentTextElement = document.querySelector('[data-current]');
 numberButtons.addEventListener('click', () => {
     .textContent = 'Test'
 });
+
+const calculator = new Calculator(previousTextElement, currentTextElement) 
+
+numberButtons.forEach(button => {
+    calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+})
 
 const add = function(a, b) {
 	return a + b;
