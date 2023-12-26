@@ -10,7 +10,8 @@ class Calculator {
         this.operation = undefined;
     }
     delete() {
-
+        // Get last value from string and remove 
+        this.current = this.current.toString().slice(0, -1);
     }
     appendNumber(number) {
         // Prevent multiple decimal points from being added 
@@ -98,3 +99,8 @@ allClearButton.addEventListener('click', () => {
     calculator.clear();
     calculator.updateDisplay();
 });
+
+deleteButton.addEventListener('click', () => {
+    calculator.delete();
+    calculator.updateDisplay();
+})
