@@ -60,9 +60,38 @@ class Calculator {
         // Clears previous operand 
         this.previous = '';
     }
+    /* 
+    getDisplayNumber(number) {
+        const stringNum = number.toString();
+        const integerDigits = parseFloat(stringNum.split('.')[0]);
+        // Split string on decimal character
+        const decimalDigits = stringNum.split('.')[1];
+        let integerDisplay;
+        if (isNaN(integerDigits)) {
+            integerDisplay = ''
+        } else {
+            integerDisplay integerDigits.toLocaleString('en', {
+                maximumFractionDigits: 0 })
+        }
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`
+        } else {
+            return integerDisplay;
+        }
+    } */
+
     updateDisplay() {
         this.currentTextElement.innerText = this.current;
         this.previousTextElement.innerText = this.previous;
+        /*
+        this.currentTextElement.innerText = this.getDisplayNumber(this.current);
+        if (this.opereration != null) {
+            this.previousTextElement.innerText = 
+                `${this.getDisplayNumber(this.previous)} ${this.operation}`
+        } else {
+            this.previousTextElement.innerText = '';
+        }
+        */
     }
 };
 
@@ -90,17 +119,17 @@ operationButtons.forEach(button => {
     });
 });
 
-equalsButton.addEventListener('click', () => {
+equalsButton.addEventListener('click', button => {
     calculator.compute();
     calculator.updateDisplay();
 });
 
-allClearButton.addEventListener('click', () => {
+allClearButton.addEventListener('click', button => {
     calculator.clear();
     calculator.updateDisplay();
 });
 
-deleteButton.addEventListener('click', () => {
+deleteButton.addEventListener('click', button => {
     calculator.delete();
     calculator.updateDisplay();
 })
