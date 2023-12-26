@@ -13,7 +13,10 @@ class Calculator {
 
     }
     appendNumber(number) {
-        this.current = number;
+        // Prevent multiple decimal points from being added 
+        if (number === '.' && this.current.includes('.')) return; 
+        // Continuously add numbers to display
+        this.current = this.current.toString() + number.toString();
     }
     chooseOperation(operation) {
 
